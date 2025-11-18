@@ -5,7 +5,7 @@ Public Class Form1
 
     Private Sub ButtonConnect_Click(sender As Object, e As EventArgs) Handles ButtonConnect.Click
         conn = New MySqlConnection
-        conn.ConnectionString = "server=localhost; userid=root; password=root; database=crud_demo_db;"
+        conn.ConnectionString = "server=localhost;userid=root;password=root;database=crud_demo_db;"
         Try
             conn.Open()
             MessageBox.Show("Connected")
@@ -18,9 +18,9 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonInsert_Click(sender As Object, e As EventArgs) Handles ButtonInsert.Click
-        Dim query As String = "INSERT INTO student_tbl (Name, Age, Email) VALUES (@Name, @Age, @Email)"
+        Dim query As String = "INSERT INTO students_tbl (Name, Age, Email) VALUES (@Name, @Age, @Email)"
         Try
-            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db")
+            Using conn As New MySqlConnection("server=localhost;userid=root;password=root;database=crud_demo_db;")
                 conn.Open()
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@Name", TextBoxName.Text)
@@ -31,7 +31,7 @@ Public Class Form1
                 End Using
             End Using
         Catch ex As Exception
-
+            MsgBox(ex.Message)
         End Try
     End Sub
 End Class
