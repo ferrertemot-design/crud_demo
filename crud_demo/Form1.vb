@@ -44,7 +44,8 @@ Public Class Form1
                 Dim adapter As New MySqlDataAdapter(query, conn) ' get from 
                 Dim table As New DataTable() ' table object
                 adapter.Fill(table) ' from adapter to table object
-                DataGridView1.DataSource = table ' display to DataGridView
+                DataGridView1.DataSource = table
+                DataGridView1.Columns("id").Visible = False ' display to DataGridView
             End Using
         Catch ex As Exception
             MsgBox(ex.Message)
